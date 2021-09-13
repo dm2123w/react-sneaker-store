@@ -6,7 +6,7 @@ function App() {
                     <img
                         width={40}
                         height={40}
-                        src="./icons/logo.png"
+                        src="./img/logo.png"
                         alt="logo"
                     />
                     <div>
@@ -19,7 +19,7 @@ function App() {
                         <img
                             width={18}
                             height={18}
-                            src="./icons/cart.svg"
+                            src="./img/cart.svg"
                             alt="logo"
                         />
                         <span>$135.00</span>
@@ -28,7 +28,7 @@ function App() {
                         <img
                             width={18}
                             height={18}
-                            src="./icons/user.svg"
+                            src="./img/user.svg"
                             alt="logo"
                         />
                     </li>
@@ -36,7 +36,30 @@ function App() {
             </header>
             <div className="content p-40">
                 <h1>All Items</h1>
-                ...
+                <div className="card">
+                    <img
+                        width={168}
+                        height={165}
+                        src="/img/sneakers/adidas-x-human-made-consortium-forum-low.jpg"
+                        alt=""
+                        className="sneaker-img"
+                    />
+                    <p>adidas x Human Made Consortium Forum Low</p>
+                    <div className="d-flex justify-between align-center">
+                        <div className="d-flex flex-column">
+                            <span>Price:</span>
+                            <b>$200</b>
+                        </div>
+                        <button className="button">
+                            <img
+                                width={11}
+                                height={11}
+                                src="/img/plus.svg"
+                                alt="Plus"
+                            />
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     );
