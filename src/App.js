@@ -35,29 +35,104 @@ function App() {
                 </ul>
             </header>
             <div className="content p-40">
-                <h1>All Items</h1>
-                <div className="card">
-                    <img
-                        width={168}
-                        height={165}
-                        src="/img/sneakers/adidas-x-human-made-consortium-forum-low.jpg"
-                        alt=""
-                        className="sneaker-img"
-                    />
-                    <p>adidas x Human Made Consortium Forum Low</p>
-                    <div className="d-flex justify-between align-center">
-                        <div className="d-flex flex-column">
-                            <span>Price:</span>
-                            <b>$200</b>
+                <h1 className="mb-40">All Items</h1>
+
+                <div className="d-flex">
+                    <div className="card">
+                        <img
+                            width={167}
+                            height={165}
+                            src="/img/sneakers/adidas-x-human-made-consortium-forum-low.jpg"
+                            alt=""
+                            className="sneaker-img"
+                        />
+                        <h5>adidas x Human Made Consortium Forum Low</h5>
+                        <div className="d-flex justify-between align-center">
+                            <div className="d-flex flex-column">
+                                <span>Price:</span>
+                                <b>$240</b>
+                            </div>
+                            <button className="button">
+                                <img
+                                    width={11}
+                                    height={11}
+                                    src="/img/plus.svg"
+                                    alt="Plus"
+                                />
+                            </button>
                         </div>
-                        <button className="button">
-                            <img
-                                width={11}
-                                height={11}
-                                src="/img/plus.svg"
-                                alt="Plus"
-                            />
-                        </button>
+                    </div>
+                    <div className="card">
+                        <img
+                            width={167}
+                            height={165}
+                            src="/img/sneakers/asics-gel-lyte-iii.jpg"
+                            alt=""
+                            className="sneaker-img"
+                        />
+                        <h5>Asics Gel-Lyte III</h5>
+                        <div className="d-flex justify-between align-center">
+                            <div className="d-flex flex-column">
+                                <span>Price:</span>
+                                <b>$200</b>
+                            </div>
+                            <button className="button">
+                                <img
+                                    width={11}
+                                    height={11}
+                                    src="/img/plus.svg"
+                                    alt="Plus"
+                                />
+                            </button>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <img
+                            width={167}
+                            height={165}
+                            src="/img/sneakers/asics-gel-preleus.jpg"
+                            alt=""
+                            className="sneaker-img"
+                        />
+                        <h5>Asics Gel-preleus</h5>
+                        <div className="d-flex justify-between align-center">
+                            <div className="d-flex flex-column">
+                                <span>Price:</span>
+                                <b>$210</b>
+                            </div>
+                            <button className="button">
+                                <img
+                                    width={11}
+                                    height={11}
+                                    src="/img/plus.svg"
+                                    alt="Plus"
+                                />
+                            </button>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <img
+                            width={167}
+                            height={165}
+                            src="/img/sneakers/nike-air-huarache.jpg"
+                            alt=""
+                            className="sneaker-img"
+                        />
+                        <h5>Nike Air Huarache</h5>
+                        <div className="d-flex justify-between align-center">
+                            <div className="d-flex flex-column">
+                                <span>Price:</span>
+                                <b>$200</b>
+                            </div>
+                            <button className="button">
+                                <img
+                                    width={11}
+                                    height={11}
+                                    src="/img/plus.svg"
+                                    alt="Plus"
+                                />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
