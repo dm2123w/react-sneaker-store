@@ -35,8 +35,13 @@ function App() {
                 </ul>
             </header>
             <div className="content p-40">
-                <h1 className="mb-40">All Items</h1>
-
+                <div className="d-flex align-center justify-between mb-40">
+                    <h1>All Items</h1>
+                    <div className="search-block d-flex">
+                        <img src="./img/search.svg" alt="Search" />
+                        <input placeholder="Search..." />
+                    </div>
+                </div>
                 <div className="d-flex">
                     <div className="card">
                         <img

@@ -6,6 +6,10 @@ body {
     background-color: #e7f6ff;
 }
 
+* {
+    font-family: "Inter", sans-serif;
+}
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
@@ -72,4 +76,16 @@ header {
 
 .sneaker-img {
     border-radius: 20px;
+}
+
+.search-block {
+    border: 1px solid #f2f2f2;
+    border-radius: 10px;
+    padding: 0 15px;
+
+    input {
+        border: 0;
+        padding: 13px;
+        font-size: 16px;
+    }
 }
