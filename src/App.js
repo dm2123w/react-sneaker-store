@@ -2,9 +2,27 @@ function App() {
     return (
         <div className="wrapper clear">
             <div className="overlay">
-                <div className="drawer"></div>
+                <div className="drawer">
+                    <h2>Cart</h2>
+                    <div className="cartItem d-flex align-center">
+                        <img
+                            className="mr-20"
+                            width={70}
+                            height={70}
+                            src="/img/sneakers/adidas-x-human-made-consortium-forum-low.jpg"
+                            alt="Sneakers"
+                        />
+                        <div className="mr-20">
+                            <p className="mb-5">
+                                adidas x Human Made Consortium Forum Low
+                            </p>
+                            <b>$240</b>
+                        </div>
+                        <img src="/img/btn-remove.svg" alt="Remove" />
+                    </div>
+                </div>
             </div>
-            
+
             <header className="d-flex justify-between align-center p-40">
                 <div className="d-flex align-center">
                     <img
