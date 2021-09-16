@@ -1,6 +1,10 @@
 function App() {
     return (
         <div className="wrapper clear">
+            <div className="overlay">
+                <div className="drawer"></div>
+            </div>
+            
             <header className="d-flex justify-between align-center p-40">
                 <div className="d-flex align-center">
                     <img
