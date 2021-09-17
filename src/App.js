@@ -3,26 +3,61 @@ function App() {
         <div className="wrapper clear">
             <div className="overlay">
                 <div className="drawer">
-                    <h2>Cart</h2>
-                    <div className="cartItem d-flex align-center">
-                        <img
-                            className="mr-20"
-                            width={70}
-                            height={70}
-                            src="/img/sneakers/adidas-x-human-made-consortium-forum-low.jpg"
-                            alt="Sneakers"
-                        />
-                        <div className="mr-20">
-                            <p className="mb-5">
-                                adidas x Human Made Consortium Forum Low
-                            </p>
-                            <b>$240</b>
+                    <h2 className="mb-30">Cart</h2>
+                    <div className="items">
+                        <div className="cartItem d-flex align-center mb-20">
+                            <img
+                                className="mr-20"
+                                width={70}
+                                height={70}
+                                src="/img/sneakers/adidas-x-human-made-consortium-forum-low.jpg"
+                                alt="Sneakers"
+                            />
+                            <div className="mr-20">
+                                <p className="mb-5">
+                                    adidas x Human Made Consortium Forum Low
+                                </p>
+                                <b>$240</b>
+                            </div>
+                            <img
+                                className="removeBtn"
+                                src="/img/btn-remove.svg"
+                                alt="Remove"
+                            />
                         </div>
-                        <img
-                            className="removeBtn"
-                            src="/img/btn-remove.svg"
-                            alt="Remove"
-                        />
+                        <div className="cartItem d-flex align-center">
+                            <img
+                                className="mr-20"
+                                width={70}
+                                height={70}
+                                src="/img/sneakers/adidas-x-human-made-consortium-forum-low.jpg"
+                                alt="Sneakers"
+                            />
+                            <div className="mr-20">
+                                <p className="mb-5">
+                                    adidas x Human Made Consortium Forum Low
+                                </p>
+                                <b>$240</b>
+                            </div>
+                            <img
+                                className="removeBtn"
+                                src="/img/btn-remove.svg"
+                                alt="Remove"
+                            />
+                        </div>
+
+                        <ul>
+                            <li>
+                                <span>Total</span>
+                                <div></div>
+                                <b>$480</b>
+                            </li>
+                            <li>
+                                <span>Tax 5%</span>
+                                <div></div>
+                                <b>$24</b>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

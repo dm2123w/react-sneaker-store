@@ -114,7 +114,7 @@ header {
 
 .drawer {
     position: absolute;
-    width: 385px;
+    width: 420px;
     height: 100%;
     right: 0;
     padding: 30px;
@@ -131,9 +131,11 @@ header {
     overflow: hidden;
     border-radius: 20px;
     overflow: hidden;
+    padding: 20px;
 
     p {
         font-size: 16px;
+        margin: 0;
     }
 
     b {
