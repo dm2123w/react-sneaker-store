@@ -45,19 +45,21 @@ function App() {
                                 alt="Remove"
                             />
                         </div>
-
+                    </div>
+                    <div className="cartTotalBlock">
                         <ul>
-                            <li>
+                            <li className="d-flex">
                                 <span>Total</span>
                                 <div></div>
                                 <b>$480</b>
                             </li>
-                            <li>
+                            <li className="d-flex">
                                 <span>Tax 5%</span>
                                 <div></div>
                                 <b>$24</b>
                             </li>
                         </ul>
+                        <button>Make an order</button>
                     </div>
                 </div>
             </div>
