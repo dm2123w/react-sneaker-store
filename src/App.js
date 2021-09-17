@@ -18,7 +18,11 @@ function App() {
                             </p>
                             <b>$240</b>
                         </div>
-                        <img src="/img/btn-remove.svg" alt="Remove" />
+                        <img
+                            className="removeBtn"
+                            src="/img/btn-remove.svg"
+                            alt="Remove"
+                        />
                     </div>
                 </div>
             </div>
