@@ -1,7 +1,10 @@
+import Card from "./components/Card";
+import Header from "./components/Header";
+
 function App() {
     return (
         <div className="wrapper clear">
-            <div className="overlay">
+            <div style={{ display: "none" }} className="overlay">
                 <div className="drawer">
                     <h2 className="d-flex justify-between mb-30">
                         Cart
@@ -74,40 +77,7 @@ function App() {
                     </div>
                 </div>
             </div>
-
-            <header className="d-flex justify-between align-center p-40">
-                <div className="d-flex align-center">
-                    <img
-                        width={40}
-                        height={40}
-                        src="./img/logo.png"
-                        alt="logo"
-                    />
-                    <div>
-                        <h3>Sneaker Shop</h3>
-                        <p>Discover the best sneakers</p>
-                    </div>
-                </div>
-                <ul className="d-flex">
-                    <li className="mr-30">
-                        <img
-                            width={18}
-                            height={18}
-                            src="./img/cart.svg"
-                            alt="logo"
-                        />
-                        <span>$135.00</span>
-                    </li>
-                    <li>
-                        <img
-                            width={18}
-                            height={18}
-                            src="./img/user.svg"
-                            alt="logo"
-                        />
-                    </li>
-                </ul>
-            </header>
+            <Header />
             <div className="content p-40">
                 <div className="d-flex align-center justify-between mb-40">
                     <h1>All Items</h1>
@@ -117,33 +87,7 @@ function App() {
                     </div>
                 </div>
                 <div className="d-flex">
-                    <div className="card">
-                        <div className="favorite">
-                            <img src="/img/unliked.svg" alt="Unliked" />
-                        </div>
-                        <img
-                            width={167}
-                            height={165}
-                            src="/img/sneakers/adidas-x-human-made-consortium-forum-low.jpg"
-                            alt=""
-                            className="sneaker-img"
-                        />
-                        <h5>adidas x Human Made Consortium Forum Low</h5>
-                        <div className="d-flex justify-between align-center">
-                            <div className="d-flex flex-column">
-                                <span>Price:</span>
-                                <b>$240</b>
-                            </div>
-                            <button className="button">
-                                <img
-                                    width={11}
-                                    height={11}
-                                    src="/img/plus.svg"
-                                    alt="Plus"
-                                />
-                            </button>
-                        </div>
-                    </div>
+                    <Card />
                     <div className="card">
                         <img
                             width={167}
