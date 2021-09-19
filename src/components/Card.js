@@ -1,4 +1,5 @@
-function Card({ obj }) {
+function Card(props) {
+    console.log(props);
     return (
         <div className="card">
             <div className="favorite">
@@ -7,15 +8,15 @@ function Card({ obj }) {
             <img
                 width={167}
                 height={165}
-                src={obj.imageUrl}
+                src={props.imageUrl}
                 alt=""
                 className="sneaker-img"
             />
-            <h5>{obj.name}</h5>
+            <h5>{props.title}</h5>
             <div className="d-flex justify-between align-center">
                 <div className="d-flex flex-column">
                     <span>Price:</span>
-                    <b>{obj.price}</b>
+                    <b>{props.price}</b>
                 </div>
                 <button className="button">
                     <img

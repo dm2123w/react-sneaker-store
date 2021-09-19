@@ -4,22 +4,22 @@ import Card from "./components/Card";
 
 const arr = [
     {
-        name: "adidas x Human Made Consortium Forum Low",
+        title: "adidas x Human Made Consortium Forum Low",
         price: "$240",
         imageUrl: "/img/sneakers/adidas-x-human-made-consortium-forum-low.jpg",
     },
     {
-        name: "Asics Gel-Lyte III",
+        title: "Asics Gel-Lyte III",
         price: "$200",
         imageUrl: "/img/sneakers/asics-gel-lyte-iii.jpg",
     },
     {
-        name: "Asics Gel-preleus",
+        title: "Asics Gel-preleus",
         price: "$210",
         imageUrl: "/img/sneakers/asics-gel-preleus.jpg",
     },
     {
-        name: "Nike Air Huarache",
+        title: "Nike Air Huarache",
         price: "$200",
         imageUrl: "/img/sneakers/nike-air-huarache.jpg",
     },
@@ -40,7 +40,11 @@ function App() {
                 </div>
                 <div className="d-flex">
                     {arr.map((obj) => (
-                        <Card obj={obj} />
+                        <Card
+                            title={obj.title}
+                            price={obj.price}
+                            imageUrl={obj.imageUrl}
+                        />
                     ))}
                 </div>
             </div>
