@@ -1,4 +1,4 @@
-function Card() {
+function Card({ obj }) {
     return (
         <div className="card">
             <div className="favorite">
@@ -7,15 +7,15 @@ function Card() {
             <img
                 width={167}
                 height={165}
-                src="/img/sneakers/adidas-x-human-made-consortium-forum-low.jpg"
+                src={obj.imageUrl}
                 alt=""
                 className="sneaker-img"
             />
-            <h5>adidas x Human Made Consortium Forum Low</h5>
+            <h5>{obj.name}</h5>
             <div className="d-flex justify-between align-center">
                 <div className="d-flex flex-column">
                     <span>Price:</span>
-                    <b>$240</b>
+                    <b>{obj.price}</b>
                 </div>
                 <button className="button">
                     <img

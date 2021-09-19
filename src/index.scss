@@ -124,6 +124,7 @@ header {
     box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
 
     .items {
+        flex: 1;
         overflow: auto;
         margin-bottom: 40px;
     }
@@ -141,10 +142,6 @@ header {
             }
         }
     }
-}
-
-.items {
-    flex: 1;
 }
 
 .cartItem {
