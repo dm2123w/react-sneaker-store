@@ -46,9 +46,9 @@ function App() {
                             price={obj.price}
                             imageUrl={obj.imageUrl}
                             onFavorite={() =>
-                                console.log("Добавили в закладки")
+                                console.log("Added to favorites")
                             }
-                            onPlus={() => console.log("Нажали плюс")}
+                            onPlus={() => console.log("Added to cart")}
                         />
                     ))}
                 </div>
