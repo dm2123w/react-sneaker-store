@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import Card from "./components/Card";
@@ -44,6 +45,10 @@ function App() {
                             title={obj.title}
                             price={obj.price}
                             imageUrl={obj.imageUrl}
+                            onFavorite={() =>
+                                console.log("Добавили в закладки")
+                            }
+                            onPlus={() => console.log("Нажали плюс")}
                         />
                     ))}
                 </div>
