@@ -3,36 +3,21 @@ import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import Card from "./components/Card";
 
-const arr = [
-    {
-        title: "adidas x Human Made Consortium Forum Low",
-        price: "$240",
-        imageUrl: "/img/sneakers/adidas-x-human-made-consortium-forum-low.jpg",
-    },
-    {
-        title: "Asics Gel-Lyte III",
-        price: "$200",
-        imageUrl: "/img/sneakers/asics-gel-lyte-iii.jpg",
-    },
-    {
-        title: "Asics Gel-preleus",
-        price: "$210",
-        imageUrl: "/img/sneakers/asics-gel-preleus.jpg",
-    },
-    {
-        title: "Nike Air Huarache",
-        price: "$200",
-        imageUrl: "/img/sneakers/nike-air-huarache.jpg",
-    },
-];
-
 function App() {
+    const [items, setItems] = useState();
+
     const [cartOpened, setCartOpened] = useState(false);
 
     return (
         <div className="wrapper clear">
-            {cartOpened ? <Drawer /> : null}
-            <Header onClickCart={()=> setCartOpened(true)} />
+            {cartOpened && (
+                <Drawer
+                    onClose={() => {
+                        setCartOpened(false);
+                    }}
+                />
+            )}
+            <Header onClickCart={() => setCartOpened(true)} />
             <div className="content p-40">
                 <div className="d-flex align-center justify-between mb-40">
                     <h1>All Items</h1>
@@ -41,8 +26,8 @@ function App() {
                         <input placeholder="Search..." />
                     </div>
                 </div>
-                <div className="d-flex">
-                    {arr.map((obj) => (
+                <div className="d-flex flex-wrap">
+                    {items.map((obj) => (
                         <Card
                             title={obj.title}
                             price={obj.price}
