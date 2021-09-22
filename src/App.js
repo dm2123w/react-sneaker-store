@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import Card from "./components/Card";
@@ -10,15 +11,26 @@ function App() {
     const [cartOpened, setCartOpened] = useState(false);
 
     useEffect(() => {
-        fetch("https://614a2aed07549f001755a831.mockapi.io/items")
+        axios
+            .get("https://614a2aed07549f001755a831.mockapi.io/items")
             .then((res) => {
-                return res.json();
-            })
-            .then((json) => setItems(json));
+                setItems(res.data);
+            });
+        axios
+            .get("https://614a2aed07549f001755a831.mockapi.io/cart")
+            .then((res) => {
+                setCartItems(res.data);
+            });
     }, []);
 
     const onAddToCart = (obj) => {
+        axios.post("https://614a2aed07549f001755a831.mockapi.io/cart", obj);
         setCartItems((prev) => [...prev, obj]);
+    };
+
+    const onRemoveItem = (id) => {
+        axios.delete(`https://614a2aed07549f001755a831.mockapi.io/cart/${id}`);
+        setCartItems((prev) => prev.filter((item) => item.id !== id));
     };
 
     const onChangeSearchInput = (event) => {
@@ -33,6 +45,7 @@ function App() {
                     onClose={() => {
                         setCartOpened(false);
                     }}
+                    onRemove={onRemoveItem}
                 />
             )}
             <Header onClickCart={() => setCartOpened(true)} />
@@ -59,16 +72,24 @@ function App() {
                     </div>
                 </div>
                 <div className="d-flex flex-wrap">
-                    {items.map((item) => (
-                        <Card
-                            key={item.title}
-                            title={item.title}
-                            price={item.price}
-                            imageUrl={item.imageUrl}
-                            onFavorite={() => console.log("Added to favorites")}
-                            onPlus={(obj) => onAddToCart(obj)}
-                        />
-                    ))}
+                    {items
+                        .filter((item) =>
+                            item.title
+                                .toLowerCase()
+                                .includes(searchValue.toLowerCase())
+                        )
+                        .map((item) => (
+                            <Card
+                                key={item.title}
+                                title={item.title}
+                                price={item.price}
+                                imageUrl={item.imageUrl}
+                                onFavorite={() =>
+                                    console.log("Added to favorites")
+                                }
+                                onPlus={(obj) => onAddToCart(obj)}
+                            />
+                        ))}
                 </div>
             </div>
         </div>
