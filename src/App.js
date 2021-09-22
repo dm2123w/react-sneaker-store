@@ -1,12 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import Card from "./components/Card";
 
 function App() {
-    const [items, setItems] = useState();
-
+    const [items, setItems] = useState([]);
     const [cartOpened, setCartOpened] = useState(false);
+
+    useEffect(() => {
+        fetch("https://614a2aed07549f001755a831.mockapi.io/items")
+            .then((res) => {
+                return res.json();
+            })
+            .then((json) => setItems(json));
+    }, []);
 
     return (
         <div className="wrapper clear">
