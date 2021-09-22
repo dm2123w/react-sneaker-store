@@ -2,7 +2,7 @@ function Header(props) {
     return (
         <header className="d-flex justify-between align-center p-40">
             <div className="d-flex align-center">
-                <img width={40} height={40} src="./img/logo.png" alt="logo" />
+                <img width={40} height={40} src="./img/logo.png" alt="Logo" />
                 <div>
                     <h3>Sneaker Shop</h3>
                     <p>Discover the best sneakers</p>
@@ -14,7 +14,7 @@ function Header(props) {
                         width={18}
                         height={18}
                         src="./img/cart.svg"
-                        alt="logo"
+                        alt="Cart"
                     />
                     <span>$135.00</span>
                 </li>
@@ -23,7 +23,7 @@ function Header(props) {
                         width={18}
                         height={18}
                         src="./img/user.svg"
-                        alt="logo"
+                        alt="User"
                     />
                 </li>
             </ul>
