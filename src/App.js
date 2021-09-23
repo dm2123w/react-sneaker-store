@@ -42,16 +42,21 @@ function App() {
     };
 
     const onAddToFavorite = async (obj) => {
-        if (favorites.find((favObj) => favObj.id === obj.id)) {
-            axios.delete(
-                `https://614a2aed07549f001755a831.mockapi.io/favorites/${obj.id}`
-            );
-        } else {
-            const { data } = await axios.post(
-                "https://614a2aed07549f001755a831.mockapi.io/favorites",
-                obj
-            );
-            setFavorites((prev) => [...prev, data]);
+        try {
+            if (favorites.find((favObj) => favObj.id === obj.id)) {
+                axios.delete(
+                    `https://614a2aed07549f001755a831.mockapi.io/favorites/${obj.id}`
+                );
+            } else {
+                const { data } = await axios.post(
+                    "https://614a2aed07549f001755a831.mockapi.io/favorites",
+                    obj
+                );
+                setFavorites((prev) => [...prev, data]);
+            }
+        } catch (error) {
+            alert("Failed to add to cart");
+            console.log(error);
         }
     };
 
