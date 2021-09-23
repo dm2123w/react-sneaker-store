@@ -7,6 +7,7 @@ import Card from "./components/Card";
 function App() {
     const [items, setItems] = useState([]);
     const [cartItems, setCartItems] = useState([]);
+    const [favorites, setFavorites] = useState([]);
     const [searchValue, setSearchValue] = useState("");
     const [cartOpened, setCartOpened] = useState(false);
 
@@ -31,6 +32,14 @@ function App() {
     const onRemoveItem = (id) => {
         axios.delete(`https://614a2aed07549f001755a831.mockapi.io/cart/${id}`);
         setCartItems((prev) => prev.filter((item) => item.id !== id));
+    };
+
+    const onAddToFavorite = (obj) => {
+        axios.post(
+            "https://614a2aed07549f001755a831.mockapi.io/favorites",
+            obj
+        );
+        setFavorites((prev) => [...prev, obj]);
     };
 
     const onChangeSearchInput = (event) => {
@@ -84,9 +93,7 @@ function App() {
                                 title={item.title}
                                 price={item.price}
                                 imageUrl={item.imageUrl}
-                                onFavorite={() =>
-                                    console.log("Added to favorites")
-                                }
+                                onFavorite={(obj) => onAddToFavorite(obj)}
                                 onPlus={(obj) => onAddToCart(obj)}
                             />
                         ))}
