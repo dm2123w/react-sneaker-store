@@ -20,7 +20,6 @@ function App() {
             const cartResponse = await axios.get(
                 "https://614a2aed07549f001755a831.mockapi.io/cart"
             );
-
             const favoritesResponse = await axios.get(
                 "https://614a2aed07549f001755a831.mockapi.io/favorites"
             );
