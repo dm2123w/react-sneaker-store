@@ -1,4 +1,16 @@
+import { useContext, useState } from "react";
+import AppContext from "../context";
+import Info from "./Info";
+
 function Drawer({ onClose, onRemove, items = [] }) {
+    const { setCartItems } = useContext(AppContext);
+    const [isOrderCompleted, setIsOrderCompleted] = useState(false);
+
+    const onClickOrder = () => {
+        setIsOrderCompleted(true);
+        setCartItems([]);
+    };
+
     return (
         <div className="overlay">
             <div className="drawer">
@@ -13,7 +25,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
                 </h2>
 
                 {items.length > 0 ? (
-                    <div>
+                    <div className="d-flex flex-column flex">
                         <div className="items">
                             {items.map((obj) => (
                                 <div
@@ -52,31 +64,33 @@ function Drawer({ onClose, onRemove, items = [] }) {
                                     <b>$24</b>
                                 </li>
                             </ul>
-                            <button className="greenButton">
+                            <button
+                                onClick={onClickOrder}
+                                className="greenButton"
+                            >
                                 Make an order{" "}
                                 <img src="/img/arrow.svg" alt="Arrow" />
                             </button>
                         </div>
                     </div>
                 ) : (
-                    <div className="cartEmpty d-flex align-center justify-center flex-column flex">
-                        <img
-                            className="mb-20"
-                            width="120px"
-                            height="120px"
-                            src="/img/empty-cart.jpg"
-                            alt="Empty"
-                        />
-                        <h2>Cart is empty</h2>
-                        <p className="opacity-6">
-                            To place an order, add at least one item to your
-                            cart.
-                        </p>
-                        <button onClick={onClose} className="greenButton">
-                            <img src="/img/arrow.svg" alt="Arrow" />
-                            Come back
-                        </button>
-                    </div>
+                    <Info
+                        title={
+                            isOrderCompleted
+                                ? "Order is processed"
+                                : "Cart is empty"
+                        }
+                        description={
+                            isOrderCompleted
+                                ? "Expect delivery!"
+                                : "To place an order, add at least one item to your cart."
+                        }
+                        image={
+                            isOrderCompleted
+                                ? "/img/complete-order.jpg"
+                                : "/img/empty-cart.jpg"
+                        }
+                    />
                 )}
             </div>
         </div>

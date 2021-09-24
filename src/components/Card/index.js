@@ -10,7 +10,6 @@ function Card({
     price,
     onFavorite,
     onPlus,
-    added = false,
     favorited = false,
     loading = false,
 }) {
