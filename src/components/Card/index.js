@@ -1,6 +1,7 @@
-import { useState } from "react";
-import ContentLoading from "react-content-loader";
+import { useState, useContext } from "react";
+import ContentLoader from "react-content-loader";
 import styles from "./Card.module.scss";
+import AppContext from "../../context";
 
 function Card({
     id,
@@ -13,7 +14,7 @@ function Card({
     favorited = false,
     loading = false,
 }) {
-    const [isAdded, setIsAdded] = useState(added);
+    const { isItemAdded } = useContext(AppContext);
     const [isFavorite, setIsFavorite] = useState(favorited);
     const obj = { id, parentId: id, title, imageUrl, price };
 
@@ -32,7 +33,7 @@ function Card({
                 <ContentLoader
                     speed={2}
                     width={155}
-                    height={265}
+                    height={250}
                     viewBox="0 0 160 265"
                     backgroundColor="#f3f3f3"
                     foregroundColor="#ecebeb"
@@ -87,7 +88,7 @@ function Card({
                         <img
                             className={styles.plus}
                             src={
-                                isAdded
+                                isItemAdded(id)
                                     ? "/img/btn-checked.svg"
                                     : "/img/btn-plus.svg"
                             }
