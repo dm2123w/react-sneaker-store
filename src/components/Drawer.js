@@ -1,14 +1,40 @@
 import { useContext, useState } from "react";
+import axios from "axios";
 import AppContext from "../context";
 import Info from "./Info";
 
-function Drawer({ onClose, onRemove, items = [] }) {
-    const { setCartItems } = useContext(AppContext);
-    const [isOrderCompleted, setIsOrderCompleted] = useState(false);
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-    const onClickOrder = () => {
-        setIsOrderCompleted(true);
-        setCartItems([]);
+function Drawer({ onClose, onRemove, items = [] }) {
+    const { cartItems, setCartItems } = useContext(AppContext);
+    const [orderId, setOrderId] = useState(null);
+    const [isOrderCompleted, setIsOrderCompleted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const onClickOrder = async () => {
+        try {
+            setIsLoading(true);
+            const { data } = await axios.post(
+                "https://614a2aed07549f001755a831.mockapi.io/orders",
+                { items: cartItems }
+            );
+            setOrderId(data.id);
+            setIsOrderCompleted(true);
+            setCartItems([]);
+
+            for (let i = 0; i < cartItems.length; i++) {
+                const item = cartItems[i];
+                await axios.delete(
+                    "https://614a2aed07549f001755a831.mockapi.io/cart/" +
+                        item.id
+                );
+                await delay(1000);
+            }
+        } catch (error) {
+            alert("Failed to create order");
+            console.log(error);
+        }
+        setIsLoading(false);
     };
 
     return (
@@ -82,7 +108,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
                         }
                         description={
                             isOrderCompleted
-                                ? "Expect delivery!"
+                                ? `Tracking number of your order is ${orderId}. Expect delivery!`
                                 : "To place an order, add at least one item to your cart."
                         }
                         image={

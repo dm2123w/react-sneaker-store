@@ -224,6 +224,11 @@ header {
     font-weight: 500;
     cursor: pointer;
 
+    &:disabled {
+        background: #775454 !important;
+        cursor: default !important;
+    }
+
     &:hover {
         background: lighten($color: #9dd558, $amount: 5%);
     }
