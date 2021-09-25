@@ -5,8 +5,8 @@ import AppContext from "../../context";
 
 function Card({
     id,
-    imageUrl,
     title,
+    imageUrl,
     price,
     onFavorite,
     onPlus,
@@ -59,7 +59,6 @@ function Card({
                 </ContentLoader>
             ) : (
                 <>
-                    {" "}
                     {onFavorite && (
                         <div
                             className={styles.favorite}
@@ -72,7 +71,6 @@ function Card({
                                         : "/img/unliked.svg"
                                 }
                                 alt="Unliked"
-                                onClick={onFavorite}
                             />
                         </div>
                     )}

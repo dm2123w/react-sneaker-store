@@ -52,16 +52,29 @@ function App() {
             );
             if (findItem) {
                 setCartItems((prev) =>
-                    prev.filter((item) => Number(item.parentId) !== Number(obj.id))
+                    prev.filter(
+                        (item) => Number(item.parentId) !== Number(obj.id)
+                    )
                 );
                 await axios.delete(
                     `https://614a2aed07549f001755a831.mockapi.io/cart/${findItem.id}`
                 );
             } else {
                 setCartItems((prev) => [...prev, obj]);
-                await axios.post(
+                const { data } = await axios.post(
                     "https://614a2aed07549f001755a831.mockapi.io/cart",
                     obj
+                );
+                setCartItems((prev) =>
+                    prev.map((item) => {
+                        if (item.parentId === data.parentId) {
+                            return {
+                                ...item,
+                                id: data.id,
+                            };
+                        }
+                        return item;
+                    })
                 );
             }
         } catch (error) {
