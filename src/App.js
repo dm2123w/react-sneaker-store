@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
+import Orders from "./pages/Orders";
 
 function App() {
     const [items, setItems] = useState([]);
@@ -126,6 +127,10 @@ function App() {
 
                 <Route path="/favorites" exact>
                     <Favorites />
+                </Route>
+
+                <Route path="/orders" exact>
+                    <Orders />
                 </Route>
             </div>
         </AppContext.Provider>
