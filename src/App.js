@@ -18,42 +18,70 @@ function App() {
 
     useEffect(() => {
         async function fetchData() {
-            const cartResponse = await axios.get(
-                "https://614a2aed07549f001755a831.mockapi.io/cart"
-            );
-            const favoritesResponse = await axios.get(
-                "https://614a2aed07549f001755a831.mockapi.io/favorites"
-            );
-            const itemsResponse = await axios.get(
-                "https://614a2aed07549f001755a831.mockapi.io/items"
-            );
+            try {
+                const [cartResponse, favoritesResponse, itemsResponse] =
+                    await Promise.all([
+                        await axios.get(
+                            "https://614a2aed07549f001755a831.mockapi.io/cart"
+                        ),
+                        await axios.get(
+                            "https://614a2aed07549f001755a831.mockapi.io/favorites"
+                        ),
+                        await axios.get(
+                            "https://614a2aed07549f001755a831.mockapi.io/items"
+                        ),
+                    ]);
 
-            setIsLoading(false);
-            setCartItems(cartResponse.data);
-            setFavorites(favoritesResponse.data);
-            setItems(itemsResponse.data);
+                setIsLoading(false);
+                setCartItems(cartResponse.data);
+                setFavorites(favoritesResponse.data);
+                setItems(itemsResponse.data);
+            } catch (error) {
+                alert("Error while requesting data");
+                console.error(error);
+            }
         }
 
         fetchData();
     }, []);
 
-    const onAddToCart = (obj) => {
-        if (cartItems.find((item) => Number(item.id) === Number(obj.id))) {
-            axios.delete(
-                `https://614a2aed07549f001755a831.mockapi.io/cart/${obj.id}`
+    const onAddToCart = async (obj) => {
+        try {
+            const findItem = cartItems.find(
+                (item) => Number(item.parentId) === Number(obj.id)
             );
-            setCartItems((prev) =>
-                prev.filter((item) => Number(item.id) !== Number(obj.id))
-            );
-        } else {
-            axios.post("https://614a2aed07549f001755a831.mockapi.io/cart", obj);
-            setCartItems((prev) => [...prev, obj]);
+            if (findItem) {
+                setCartItems((prev) =>
+                    prev.filter((item) => Number(item.parentId) !== Number(obj.id))
+                );
+                await axios.delete(
+                    `https://614a2aed07549f001755a831.mockapi.io/cart/${findItem.id}`
+                );
+            } else {
+                setCartItems((prev) => [...prev, obj]);
+                await axios.post(
+                    "https://614a2aed07549f001755a831.mockapi.io/cart",
+                    obj
+                );
+            }
+        } catch (error) {
+            alert("Error while adding to cart");
+            console.error(error);
         }
     };
 
     const onRemoveItem = (id) => {
-        axios.delete(`https://614a2aed07549f001755a831.mockapi.io/cart/${id}`);
-        setCartItems((prev) => prev.filter((item) => item.id !== id));
+        try {
+            axios.delete(
+                `https://614a2aed07549f001755a831.mockapi.io/cart/${id}`
+            );
+            setCartItems((prev) =>
+                prev.filter((item) => Number(item.id) !== Number(id))
+            );
+        } catch (error) {
+            alert("Error while deleting from cart");
+            console.error(error);
+        }
     };
 
     const onAddToFavorite = async (obj) => {
@@ -76,7 +104,7 @@ function App() {
             }
         } catch (error) {
             alert("Failed to add to favorites");
-            console.log(error);
+            console.error(error);
         }
     };
 
@@ -85,7 +113,7 @@ function App() {
     };
 
     const isItemAdded = (id) => {
-        return cartItems.some((obj) => Number(obj.id) === Number(id));
+        return cartItems.some((obj) => Number(obj.parentId) === Number(id));
     };
 
     return (
@@ -96,6 +124,7 @@ function App() {
                 favorites,
                 isItemAdded,
                 onAddToFavorite,
+                onAddToCart,
                 setCartOpened,
                 setCartItems,
             }}

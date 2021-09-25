@@ -60,17 +60,22 @@ function Card({
             ) : (
                 <>
                     {" "}
-                    <div className={styles.favorite} onClick={onClickFavorite}>
-                        <img
-                            src={
-                                isFavorite
-                                    ? "/img/liked.svg"
-                                    : "/img/unliked.svg"
-                            }
-                            alt="Unliked"
-                            onClick={onFavorite}
-                        />
-                    </div>
+                    {onFavorite && (
+                        <div
+                            className={styles.favorite}
+                            onClick={onClickFavorite}
+                        >
+                            <img
+                                src={
+                                    isFavorite
+                                        ? "/img/liked.svg"
+                                        : "/img/unliked.svg"
+                                }
+                                alt="Unliked"
+                                onClick={onFavorite}
+                            />
+                        </div>
+                    )}
                     <img
                         width={167}
                         height={165}
@@ -84,16 +89,18 @@ function Card({
                             <span>Price:</span>
                             <b>${price}</b>
                         </div>
-                        <img
-                            className={styles.plus}
-                            src={
-                                isItemAdded(id)
-                                    ? "/img/btn-checked.svg"
-                                    : "/img/btn-plus.svg"
-                            }
-                            alt="Plus"
-                            onClick={onClickPlus}
-                        />
+                        {onPlus && (
+                            <img
+                                className={styles.plus}
+                                src={
+                                    isItemAdded(id)
+                                        ? "/img/btn-checked.svg"
+                                        : "/img/btn-plus.svg"
+                                }
+                                alt="Plus"
+                                onClick={onClickPlus}
+                            />
+                        )}
                     </div>
                 </>
             )}

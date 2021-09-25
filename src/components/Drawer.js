@@ -32,7 +32,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
             }
         } catch (error) {
             alert("Failed to create order");
-            console.log(error);
+            console.error(error);
         }
         setIsLoading(false);
     };
@@ -52,7 +52,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
 
                 {items.length > 0 ? (
                     <div className="d-flex flex-column flex">
-                        <div className="items">
+                        <div className="items flex">
                             {items.map((obj) => (
                                 <div
                                     key={obj.id}
