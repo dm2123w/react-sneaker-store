@@ -32,11 +32,7 @@ function Orders() {
             </div>
             <div className="d-flex flex-wrap">
                 {(isLoading ? [...Array(8)] : orders).map((item, index) => (
-                    <Card
-                        key={index}
-                        loading={isLoading}
-                        {...item}
-                    />
+                    <Card key={index} loading={isLoading} {...item} />
                 ))}
             </div>
         </div>

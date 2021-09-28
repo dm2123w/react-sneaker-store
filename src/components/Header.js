@@ -6,14 +6,9 @@ function Header(props) {
 
     return (
         <header className="d-flex justify-between align-center p-40">
-            <Link to="/">
+            <Link to="/react-sneaker-store/">
                 <div className="d-flex align-center">
-                    <img
-                        width={40}
-                        height={40}
-                        src="./img/logo.png"
-                        alt="Logo"
-                    />
+                    <img width={40} height={40} src="img/logo.png" alt="Logo" />
                     <div>
                         <h3>Sneaker Shop</h3>
                         <p>Discover the best sneakers</p>
@@ -22,30 +17,25 @@ function Header(props) {
             </Link>
             <ul className="d-flex">
                 <li onClick={props.onClickCart} className="mr-30 cu-p">
-                    <img
-                        width={18}
-                        height={18}
-                        src="./img/cart.svg"
-                        alt="Cart"
-                    />
+                    <img width={18} height={18} src="img/cart.svg" alt="Cart" />
                     <span>${totalPrice}</span>
                 </li>
                 <li className="mr-20 cu-p">
-                    <Link to="/favorites" exact>
+                    <Link to="/react-sneaker-store/favorites" exact>
                         <img
                             width={18}
                             height={18}
-                            src="./img/heart.svg"
+                            src="img/heart.svg"
                             alt="Favorites"
                         />
                     </Link>
                 </li>
                 <li>
-                    <Link to="/orders" exact>
+                    <Link to="/react-sneaker-store/orders" exact>
                         <img
                             width={18}
                             height={18}
-                            src="./img/user.svg"
+                            src="img/user.svg"
                             alt="User"
                         />
                     </Link>
